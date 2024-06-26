@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg py-3 fixed-top {{ Request::segment(1) == '' ? '' : 'bg-white shadow'}}">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="{{ asset('assets/css/icons/diskop.png') }}" alt="" width="80" height="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="beranda">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="penjadwalan">Penjadwalan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="umku">PB-UMKU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="akun">Cara Registrasi Akun</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="pangan">Daftar Jenis Pangan</a>
+            <a href=" https://ereg-rba.pom.go.id/front/jenispangan"></a>     
+          </li>
+        </ul>
+        <div class="d-flex">
+          @auth
+              <form action="/logout" method="POST">
+                @csrf
+                <button class="btn btn-dark" type="submit">Logout</button>
+              </form>
+              @else
+                  <a class="btn btn-danger" href="/">Logout</a>
+          @endauth
+        </div>
+      </div>
+    </div>
+  </nav>
