@@ -193,12 +193,25 @@
         </nav>
         <!-- /.navbar -->
 
+        <style>
+            .img-circle {
+                border-radius: 50%;
+                object-fit: cover;
+                aspect-ratio: 1 / 1;
+                width: 100px;
+                /* Atur ukuran sesuai kebutuhan */
+                height: 100px;
+                /* Atur ukuran sesuai kebutuhan */
+                overflow: hidden;
+            }
+        </style>
+
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-3">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{ asset('assets/sibakul-ukm.jpg ') }}" alt=" "
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ asset('assets/sibakul-ukm.jpg ') }}" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">SIPP</span>
             </a>
 
@@ -259,20 +272,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <form action="{{ route('admin.logoutadmin') }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button type="submit" class="nav-link"
-                                    style="background: none; border: none; padding: 0; display: flex; align-items: center;">
-                                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                                    <p style="margin: 0;">Logout</p>
-                                </button>
-                            </form>
+                            <a href="#" class="nav-link"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p>Logout</p>
+                            </a>
                         </li>
                     </ul>
                     </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
+
+                <form action="{{ route('admin.logoutadmin') }}" method="POST" style="display: none;"
+                    id="logout-form">
+                    @csrf
+                </form>
             </div>
             <!-- /.sidebar -->
         </aside>
