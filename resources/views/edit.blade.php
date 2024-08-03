@@ -22,7 +22,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <form action="{{route('user.update', ['id' =>$data->id] )}}" method="POST">
+                <form action="{{route('admin.user.update', ['id' =>$data->id] )}}" method="POST">
                     @csrf
                     @method('PUT')
               <div class="row">
@@ -59,20 +59,39 @@
                           @enderror
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputFile">File input</label>
-                          <div class="input-group">
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="exampleInputFile">
-                              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                              <span class="input-group-text">Upload</span>
-                            </div>
-                          </div>
+                          <label for="exampleInputPassword1">NIK</label>
+                          <input type="text" class="form-control" name="nik" id="exampleInputPassword1" value="{{ $data->nik}}" placeholder="Nomor Induk Kependudukan">
+                          @error('nik')
+                          <small>{{ $message }}</small>
+                          @enderror
                         </div>
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Nama Usaha</label>
+                          <input type="text" class="form-control" name="nama_usaha" id="exampleInputPassword1" value="{{ $data->nama_usaha}}" placeholder="Nama Usaha">
+                          @error('nama_usaha')
+                          <small>{{ $message }}</small>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Jenis Usaha</label>
+                          <input type="jenis_usaha" class="form-control" name="jenis_usaha" id="exampleInputPassword1" value="{{ $data->jenis_usaha}}" placeholder="Jenis Usaha">
+                          @error('jenis_usaha')
+                          <small>{{ $message }}</small>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Alamat Usaha</label>
+                          <input type="text" class="form-control" name="alamat_usaha" id="exampleInputPassword1" value="{{ $data->alamat_usaha}}"placeholder="Alamat Usaha">
+                          @error('alamat_usaha')
+                          <small>{{ $message }}</small>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">No Whatsapp</label>
+                          <input type="tel" class="form-control" name="no_whatsapp" id="exampleInputPassword1" placeholder="No Whatsapp">
+                          @error('no_whatsapp')
+                          <small>{{ $message }}</small>
+                          @enderror
                         </div>
                       </div>
                       <!-- /.card-body -->

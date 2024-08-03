@@ -1,7 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 body{
         font-family: "Poetsen One", sans-serif;
+} */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Poetsen+One&display=swap');
+body{
+
+
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
 
 .btn-danger {
   background-color: 97BE5A;
@@ -33,7 +44,7 @@ body{
   color: black;
 } 
 #hero {
-  background-image: url("../../assets/css/img/newdinas.jpeg");
+  background-image: url("../../assets/css/img/ddd.png");
   background-repeat: repeat;
   background-size: cover;
   background-position: center;
@@ -70,6 +81,11 @@ body{
   background-color: red;
 }
 
+.konten-berita p {
+  margin-bottom: 10px;
+}
+
+
 /*video*/
 #video {
   background-image: url("../../assets/css/img/desain.png");
@@ -77,17 +93,6 @@ body{
   background-size: cover;
   background-position: center;
   height: 500px;
-}
-
-.footer {
-  background-color: #343a40; /* Warna solid */
-  color: #ffffff;
-  padding: 20px 0;
-}
-.footer {
-  background: linear-gradient(to right, #343a40, #2b2b2b); /* Gradien */
-  color: #ffffff;
-  padding: 20px 0;
 }
 
 .slider-arrow {
@@ -114,4 +119,105 @@ body{
   background-color: black;
   border-radius: 50%;
 }
+
+.footer {
+  background-color: #282828;
+  color: #ffffff;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer .col-md-4 {
+  flex: 1;
+  margin: 20px 0;
+}
+
+.footer h5, .footer h4 {
+  margin-bottom: 20px;
+}
+
+.footer-items {
+  margin-bottom: 20px;
+}
+
+.footer-items ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-items ul li {
+  margin-bottom: 10px;
+}
+
+.footer-items ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-items ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer .border {
+  width: 50px;
+  height: 2px;
+  background-color: #3498db;
+  margin-bottom: 20px;
+}
+
+.footer .social-media a {
+  color: #ffffff;
+  font-size: 24px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.footer .social-media a:hover {
+  color: #3498db;
+}
+
+.footer .social-media a.fa-whatsapp:hover {
+  color: #25d366;
+}
+
+.footer .text-center {
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+}
+
+@import '~summernote/dist/summernote-bs4.min.css';
+
+#jadwal .btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+#jadwal .btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+#jadwal .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+#jadwal .btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
 

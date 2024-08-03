@@ -1,4 +1,3 @@
-<!-- resources/views/users/index.blade.php -->
 @extends('layouts.main')
 @section('content')
 <div class="content-wrapper">
@@ -7,109 +6,48 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Users</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Users</li>
-                    </ol>
-                </div>
+                    <h1 class="m-0">Selamat datang di Dashboard Admin</h1>
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-lg-6 mb-4">
+                                <div class="card shadow-sm rounded-3 border-0">
+                                    <img src="{{ asset('assets/img/foto_artikel.jpg') }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Blog Artikel</h5>
+                                        <p class="card-text">Atur dan kelola artikel</p>
+                                        <a href="{{ route('admin.blog') }}" class="btn btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                                <div class="card shadow-sm rounded-3 border-0">
+                                    <img src="{{ asset('assets/img/video.jpeg') }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Video Kegiatan</h5>
+                                        <p class="card-text">Atur dan kelola video</p>
+                                        <a href="{{ route('admin.video') }}" class="btn btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-4">
+                                <div class="card shadow-sm rounded-3 border-0">
+                                    <img src="{{ asset('assets/img/foto.jpg') }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Foto Kegiatan</h5>
+                                        <p class="card-text">Atur dan kelola Foto</p>
+                                        <a href="{{ route('admin.poto')}}" class="btn btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>                    
             </div>
         </div>
     </div>
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <!-- Data Table -->
-            <div class="row">
-                <div class="col-12">
-                    <a href="{{ route('admin.user.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Data User</h3>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>NIK</th>
-                                        <th>Nama Usaha</th>
-                                        <th>Jenis Usaha</th>
-                                        <th>Alamat</th>
-                                        <th>No Whatsapp</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data as $d)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $d->name }}</td>
-                                        <td>{{ $d->email }}</td>
-                                        <td>{{ $d->nik }}</td>
-                                        <td>{{ $d->nama_usaha }}</td>
-                                        <td>{{ $d->jenis_usaha }}</td>
-                                        <td>{{ $d->alamat_usaha }}</td>
-                                        <td>{{ $d->no_whatsapp }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.user.edit', ['id' => $d->id]) }}" class="btn btn-primary">
-                                                <i class="fas fa-pen"></i> Edit
-                                            </a>
-                                            <a data-toggle="modal" data-target="#modal-delete{{ $d->id }}" class="btn btn-danger">
-                                                <i class="fas fa-trash-alt"></i> Hapus
-                                            </a>
-                                        </td>
-                                    </tr>
-
-                                    <div class="modal fade" id="modal-delete{{ $d->id }}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Konfirmasi Hapus Data</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Apakah kamu yakin ingin menghapus data user <b>{{ $d->name }}</b>?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <form action="{{ route('admin.user.delete', ['id' => $d->id]) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Ya, Hapus</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-                                    <!-- /.modal -->
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
+   
                     <!-- /.card -->
                 </div>
             </div>

@@ -93,14 +93,14 @@
               <small>{{ $message }}</small>
           @enderror
         <div class="input-group mb-3">
-          <input type="text"  name = "alamat" class="form-control" placeholder="Alamat">
+          <input type="text"  name = "alamat_usaha" class="form-control" placeholder="Alamat">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
           </div>
-          @error('alamat')
+          @error('alamat_usaha')
               <small>{{ $message }}</small>
           @enderror
         <div class="input-group mb-3">
@@ -122,7 +122,9 @@
           <!-- /.col -->
         </div>
       </form>
-    </div>
+      <p class="mb-1">
+        <a href="{{ route('login') }}" class="text-center">Sudah memiliki akun</a>
+      </p>
     <!-- /.card-body -->
   </div>
   <!-- /.card -->

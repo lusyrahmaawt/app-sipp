@@ -1,6 +1,8 @@
 @extends('layouts.layouts')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
 <section id="hero" class="px-0">
  <div class="container text-center text-white" data-aos="fade-up">
    <div class="hero-tittle">
@@ -63,178 +65,197 @@
 </section>
 
 {{-- berita --}}
-<section id="berita">
- <div class="container py-5" data-aos="flip-up">
-   <div class="header-berita text-center">
-     <h2 class="fw-bold"> Berita Kegiatan Dinas Koperasi dan UMKM DIY</h2>
-   </div>
-   <div class="row">
-     <div class="col-lg-4">
-       <div class="card border-0">
-        <img src="{{asset('assets/css/img/bakpia.jpeg')}}" class="img-fluid" alt="">
-         <div class="konten-berita">
-           <p class="mb-3 text-secondary">27/05/2024</p>
-           <h4 class="fw-bold mb-3">Workshop Membuat Bakpia</h4>
-           <p class="text-secondary">#UmkmNaikKelas</p>
-           <a href="" class="text-decoration-none text-danger">Selengkapnya</a>
-         </div>
-       </div>
-     </div>
-     <div class="col-lg-4">
-       <div class="card border-0">
-        <img src="{{asset('assets/css/img/pasar.jpeg')}}" class="img-fluid" alt="">
-         <div class="konten-berita">
-           <p class="mb-3 text-secondary">27/05/2024</p>
-           <h4 class="fw-bold mb-3">Sibakul Jogja Jelajah Nusantara</h4>
-           <p class="text-secondary">#UmkmNaikKelas</p>
-           <a href="" class="text-decoration-none text-danger">Selengkapnya</a>
-         </div>
-       </div>
-     </div>
-     <div class="col-lg-4">
-       <div class="card border-0">
-        <img src="{{asset('assets/css/img/md22.jpeg')}}" class="img-fluid" alt="">
-         <div class="konten-berita">
-           <p class="mb-3 text-secondary">27/05/2024</p>
-           <h4 class="fw-bold mb-3">Bimtek CPPOB tahun 2024</h4>
-           <p class="text-secondary">#UmkmNaikKelas</p>
-           <a href="" class="text-decoration-none text-danger">Selengkapnya</a>
-         </div>
-       </div>
-     </div>
-   </div>
-   <div class="footer-berita text-center py-3">
-     <a href="" class="btn btn-outline-danger">Berita Lainnya</a>
-   </div>
- </div>
+<section id="berita" class="py-5" style="margin-top: 60px">
+  <div class="container py-5" data-aos="flip-up">
+      <div class="header-berita text-center">
+          <h2 class="fw-bold">Berita Kegiatan Dinas Koperasi dan UMKM DIY</h2>
+      </div>
+
+      <div class="row py-5" data-aos="flip-up">
+        @foreach ($artikels as $item)
+        <div class="col-lg-4 mb-4">
+          <div class="card border-0">
+              <img src="{{ asset('storage/artikel/' . $item->image) }}" class="img-fluid" alt="">
+              <div class="konten-berita p-3">
+                  <p class="mb-2 text-secondary">{{ $item->create_at }}</p>
+                  <h4 class="fw-bold mb-2">{{ $item->judul}}</h4>
+                  <p class="text-secondary mb-2">#UmkmNaikKelas</p>
+                  <a href="{{ route('berita.detail', ['slug' => $item->slug]) }}" class="text-decoration-none text-danger">Selengkapnya</a>
+              </div>
+          </div>
+      </div>
+        @endforeach
+          
+ 
+      </div>
+      <div class="footer-berita text-center py-3">
+          <a href="/berita" class="btn btn-outline-danger">Berita Lainnya</a>
+      </div>
+  </div>
 </section>
 {{-- berita --}}
-{{-- join --}}
-<section id="join" class="py-5">
- <div class="container py-5"data-aos="zoom-up">
-   <div class="row d-flex align-items-center">
-     <div class="col-lg-6">
-       <div class="d-flex align-items-center mb-3">
-         <div class="stripe me-2"></div>
-         <h5> Daftar Fasilitasi MD CPPOB </h5>
-         </div>
-         <h1 class="fw-bold mb-3">Cara Produksi Pangan Olahan yang Baik (CPPOB) </h1>
-         <p class="text-secondary mb-3">Cara Produksi Pangan Olahan yang Baik (CPPOB) adalah pedoman yang menjelaskan bagaimana memproduksi Pangan Olahan agar aman, bermutu, dan layak untuk dikonsumsi. Sesuai dengan Peraturan Badan Pengawas Obat Dan Makanan Nomor 22 Tahun 2021 tentang Tata Cara Penerbitan Izin Penerapan Cara Produksi Pangan Olahan Yang Baik, produsen Pangan Olahan wajib memiliki Izin Penerapan CPPOB sebagai pemenuhan persyaratan Keamanan Pangan. Untuk produsen yang memproduksi Pangan Olahan risiko tinggi, pemenuhan persyaratan keamanan pangan dibuktikan melalui Izin Penerapan PMR.</p>
-         <body>
-            <div class="container" style="margin-top: 50px;">
-                <a href="https://e-sertifikasi.pom.go.id/" class="btn btn-outline-danger">Daftar Sekarang</a>
-            </div>
-        </body>
-     </div>
-     <div class="col-lg-6">
-       <img src="{{asset('assets/css/img/CPPOB.png')}}" class="img-fluid" alt="">
-     </div>
-   </div>
- </div>
-</section>
-{{-- join --}}
 
-<section id="penjadwalan" style="margin-top: 100px" class="py-5">
-    <div class="container py-4" data-aos="flip-up">
-      <div class="header-berita text-center">
-            <h3> Data Jadwal Pendaftaran </h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">Judul</th>
-        <th scope="col">Jenis</th>
-        <th scope="col">Mulai</th>
-        <th scope="col">Berakhir</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Sertifikasi Halal Reguler
-        <p class="mb-3 text-secondary">Hotel Tara</p></td>
-        <td>Penyuluhan</td>
-        <td>15 Agustus 2024</td>
-        <td>18 Agustus 2024</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Bimtek CPPOB
-          <p class="mb-3 text-secondary">Fave Hotel</p></td>
-        <td>Penyuluhan</td>
-        <td>25 Agustus 2024</td>
-        <td>27 Agustus 2024</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Sertifikasi PIRT
-          <p class="mb-3 text-secondary">Hotel Ros In</p></td>
-        <td>Penyuluhan</td>
-        <td>01 September 2024</td>
-        <td>02 September 2024</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Pendampingan NIB
-          <p class="mb-3 text-secondary">Diskop DIY</p></td>
-        <td>Bimtek</td>
-        <td>15 September 2024</td>
-        <td>18 September 2024</td>
-      </tr>
-    </tbody>
-  </table>
+<section id="join" class="py-5 bg-light">
+  <div class="container py-5">
+      <div class="row align-items-center">
+          <div class="col-lg-6 mb-4">
+              <div class="text-center">
+                  <h2 class="fw-bold text-danger mb-4">Daftar CPPOB Secara Mandiri</h2>
+                  <p class="lead text-secondary">
+                      Pendaftaran secara mandiri memungkinkan pengajuan MD CPPOB tanpa menggunakan fasilitas dari Dinas Koperasi dan UKM DIY.
+                  </p>
+                  <p class="lead text-secondary mb-4">
+                      Kamu menggunakan biaya pribadi untuk pengajuan CPPOB dan menyediakan dokumen sesuai persyaratan BPOM.
+                  </p>
+                  <a href="https://e-sertifikasi.pom.go.id/" class="btn btn-danger btn-lg">Daftar Sekarang</a>
+              </div>
+          </div>
+          <div class="col-lg-6">
+              <img src="{{ asset('assets/css/img/CPPOB.png') }}" class="img-fluid rounded shadow-lg" alt="CPPOB">
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+{{-- penjadwalan --}}
+<section id="penjadwalan" class="py-5" style="margin-top: 100px; background-color: #f8f9fa;">
+  <div class="container" data-aos="flip-up">
+      <div class="header-berita text-center mb-5">
+          <h3 class="fw-bold">Data Jadwal Pendaftaran</h3>
+          <p class="text-secondary">Informasi lengkap mengenai jadwal kegiatan yang akan datang</p>
+      </div>
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="table-responsive">
+                  <table class="table table-hover table-bordered" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                      <thead class="thead-dark">
+                          <tr class="text-center" style="background-color: #343a40; color: #fff;">
+                              <th scope="col">No</th>
+                              <th scope="col">Mulai Kegiatan</th>
+                              <th scope="col">Berakhir Kegiatan</th>
+                              <th scope="col">Waktu Kegiatan</th>
+                              <th scope="col">Tempat Kegiatan</th>
+                              <th scope="col">Keterangan</th>
+                          </tr>
+                      </thead>
+                       {{-- @foreach ($jadwals as $item) --}}
+                       <tr class="text-center">
+                        {{-- <th scope="row">{{ $loop->iteration }}</th> --}}
+                        <th scope="row">1</th>
+                        <td>{{ $jadwals['nama_kegiatan'] }}</td>
+                        <td>{{ $jadwals['tanggal_kegiatan'] }}</td>
+                        <td>{{ $jadwals['waktu_kegiatan'] }}</td>
+                        <td>{{ $jadwals['tempat_kegiatan'] }}</td>
+                        <td>{{ $jadwals['keterangan'] }}</td>
+                    </tr>
+                {{-- @endforeach --}}
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+{{-- penjadwalan --}}
+
+<section id="poto" class="py-5">
+  <div class="container py-5">
+    <div class="header-berita text-center">
+      <h2 class="fw-bold">Foto Kegiatan</h2>
     </div>
+    <div class="row py-5" data-aos="zoom-in-up">
+      @foreach ($potos as $poto)
+      <div class="col-lg-4" data-aos="flip-up">
+              <img src="{{ asset('storage/poto/' . $poto->poto) }}" class="img-fluid" alt="">
+                  <h4 class="fw-bold mb-2">{{ $poto->kegiatan}}</h4>
+      </div>
+      @endforeach
+      <div class="footer-berita text-center">
+        <a href="" class="btn btn-outline-danger"> Foto Lainnya</a>
     </div>
-  </section>
-  
+  </div>
+</section>
+
+            
 
 
 {{-- video --}}
-<section id="video" class="py-5">
- <div class="container py-5">
-   <div class="text-center">
-     <iframe width="600" height="315" src="https://www.youtube.com/embed/1DJmbTObYgk?si=lEWoskjluqy810Me" 
-     title="YouTube video player" frameborder="0" 
-     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-     allowfullscreen></iframe>
-   </div>
- </div>
-</section>
 
 <section id="video_youtube" class="py-5">
  <div class="container py-5">
    <div class="header-berita text-center">
      <h2 class="fw-bold">Video Kegiatan CPPOB </h2>
    </div>
- <div class="row py-5">
-   <div class="col-lg-4">
-     <iframe width="300" height="215" src="https://www.youtube.com/embed/1DJmbTObYgk?si=lEWoskjluqy810Me" 
-     title="YouTube video player" frameborder="0" 
-     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-     allowfullscreen></iframe>
-   </div>
-   <div class="col-lg-4">
-     <iframe width="300" height="215" src="https://www.youtube.com/embed/1DJmbTObYgk?si=lEWoskjluqy810Me" 
-     title="YouTube video player" frameborder="0" 
-     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-     allowfullscreen></iframe>
-   </div>
-   <div class="col-lg-4">
-     <iframe width="300" height="215" src="https://www.youtube.com/embed/1DJmbTObYgk?si=lEWoskjluqy810Me" 
-     title="YouTube video player" frameborder="0" 
-     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-     allowfullscreen></iframe>
-   </div>
- </div>
-
+ <div class="row py-5" data-aos="zoom-in">
+  @foreach ($videos as $video)
+  <div class="col-lg-4">
+    <iframe width="350" height="265" src="https://www.youtube.com/embed/{{ $video->youtube_code}}" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen></iframe>
+  </div>  
+  @endforeach
+   
  <div class="footer-berita text-center">
    <a href="" class="btn btn-outline-danger"> Video Lainnya</a>
  </div>
  </div>
 </section>  
+
+<section id="konsultasi" class="py-5">
+<div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
+  <div class="carousel-inner">
+      @foreach(['konsul1', 'konsul2', 'konsul3', 'konsul4', 'konsul5'] as $key => $image)
+          <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+              <img src="{{ asset("assets/css/img/{$image}.png") }}" class="d-block w-100 img-fluid" alt="...">
+          </div>
+      @endforeach
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="text-center mt-4">
+  <a href="https://api.whatsapp.com/send?phone=+6282121044424&text=Halo%20saya%20ingin%20konsultasi" class="btn btn-success" target="_blank">
+    <i class="fa fa-whatsapp"></i> Hubungi Kami di WhatsApp
+  </a>
+</div>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</section>
 @endsection
 
 
-     {{-- video --}}
+@section('scripts')
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a.nav-link');
+
+    for (const link of links) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
+  });
+</script>
+@endsection
+
 
 

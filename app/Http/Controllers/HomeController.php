@@ -9,26 +9,29 @@ use App\Models\User;
 
 class HomeController extends Controller
 {
-    public function dashboard(){
+    public function dashboard()
+    {
         $data = User::get();
-  return view('dashboard', compact('data'));
+        return view('dashboard', compact('data'));
     }
-    public function index(){
-        $data = User::get();
 
+    public function index()
+    {
+        $data = User::get();
         return view('index', compact('data'));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('create');
     }
 
-    public function store(Request $request){
-
-        $validator = Validator::make($request->all(),[
-            'email' => 'required|email',
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users,email',
             'nama' => 'required',
-            'password' => 'required', 
+            'password' => 'required',
             'nik' => 'required',
             'nama_usaha' => 'required',
             'jenis_usaha' => 'required',
@@ -36,60 +39,81 @@ class HomeController extends Controller
             'no_whatsapp' => 'required',
         ]);
 
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator); 
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
 
-        $data['email'] = $request->email;
-        $data['name'] = $request->nama;
-        $data['password'] = Hash::make($request->password);
-        $data['nik'] = $request->nik;
-        $data['nama_usaha'] = $request->nama_usaha;
-        $data['jenis_usaha'] = $request->jenis_usaha;
-        $data['alamat_usaha'] = $request->alamat;
-        $data['no_whatsapp'] = $request->no_whatsapp;
+        $data = [
+            'email' => $request->email,
+            'name' => $request->nama,
+            'password' => Hash::make($request->password),
+            'nik' => $request->nik,
+            'nama_usaha' => $request->nama_usaha,
+            'jenis_usaha' => $request->jenis_usaha,
+            'alamat_usaha' => $request->alamat_usaha,
+            'no_whatsapp' => $request->no_whatsapp,
+        ];
 
         User::create($data);
 
-        return redirect()->route('index');
+        return redirect()->route('admin.index')->with('success', 'Data berhasil disimpan');
     }
 
-    public function edit(Request $request, $id){
+    public function edit($id)
+    {
         $data = User::find($id);
+        if (!$data) {
+            return redirect()->route('admin.index')->with('error', 'Data tidak ditemukan');
+        }
         return view('edit', compact('data'));
     }
 
-    public function update(Request $request, $id ){
-        $validator = Validator::make($request->all(),[
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'nama' => 'required',
-            'password' => 'nullable', 
+            'password' => 'nullable',
             'nik' => 'required',
             'nama_usaha' => 'required',
             'jenis_usaha' => 'required',
             'alamat_usaha' => 'required',
             'no_whatsapp' => 'required',
-
         ]);
 
-        if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator); 
-
-        $data['email'] = $request->email;
-        $data['name'] = $request->nama;
-
-        if($request->password){
-        $data['password'] = Hash::make($request->password);
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
         }
-        User::whereId($id)->update($data);
 
-        return redirect()->route('index');
+        $data = [
+            'email' => $request->email,
+            'name' => $request->nama,
+            'nik' => $request->nik,
+            'nama_usaha' => $request->nama_usaha,
+            'jenis_usaha' => $request->jenis_usaha,
+            'alamat_usaha' => $request->alamat_usaha,
+            'no_whatsapp' => $request->no_whatsapp,
+        ];
+
+        if (!empty($request->password)) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        User::where('id', $id)->update($data);
+
+        return redirect()->route('admin.index')->with('success', 'Data berhasil diperbarui');
     }
 
-    public function delete(Request $request, $id){
+    public function delete($id)
+    {
         $data = User::find($id);
 
-        if($data){
-            $data->delete();
+        if (!$data) {
+            return redirect()->route('admin.index')->with('error', 'Data tidak ditemukan');
         }
 
-        return \redirect()->route('index');
+        $data->delete();
+
+        return redirect()->route('admin.index')->with('success', 'Data berhasil dihapus');
     }
 }

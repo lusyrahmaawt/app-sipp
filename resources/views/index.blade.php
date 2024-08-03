@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
                         <li class="breadcrumb-item active">Users</li>
                     </ol>
                 </div>
@@ -66,7 +66,7 @@
                                             <td>{{ $d->nik }}</td>
                                             <td>{{ $d->nama_usaha }}</td>
                                             <td>{{ $d->jenis_usaha }}</td>
-                                            <td>{{ $d->alamat }}</td>
+                                            <td>{{ $d->alamat_usaha }}</td>
                                             <td>{{ $d->no_whatsapp }}</td>
                                             <td>
                                                 <a href ="{{ route('admin.user.edit', ['id'=> $d->id]) }}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
