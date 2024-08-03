@@ -48,12 +48,12 @@ Route::view('/pangan', 'pangan');
 Route::view('/jadwal', 'jadwal');
 
 
-    
-Route::prefix('admin')->as('admin.')->group(function () {
+
+Route::prefix('/admin')->as('admin.')->group(function () {
     Route::get('/loginadmin', [AuthController::class, 'index'])->name('loginadmin');
     Route::post('/loginadmin-proses', [AuthController::class, 'loginadmin_proses'])->name('loginadmin-proses');
     Route::post('/logoutadmin', [AuthController::class, 'logoutadmin'])->name('logoutadmin');
-    
+
     Route::middleware(['auth.admin'])->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
         Route::get('/index', [HomeController::class, 'index'])->name('index');
@@ -63,7 +63,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/edit/{id}', [HomeController::class, 'edit'])->name('user.edit');
         Route::put('/update/{id}', [HomeController::class, 'update'])->name('user.update');
         Route::delete('/delete/{id}', [HomeController::class, 'delete'])->name('user.delete');
-       
+
         Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
         Route::get('/penjadwalan', [PenjadwalanController::class, 'index'])->name('penjadwalan');
         Route::get('/tambahjadwal', [PenjadwalanController::class, 'tambahjadwal'])->name('tambahjadwal');
@@ -71,7 +71,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/editjadwal/{id}', [PenjadwalanController::class, 'editjadwal'])->name('editjadwal');
         Route::put('/updatejadwal/{id}', [PenjadwalanController::class, 'updatejadwal'])->name('updatejadwal');
         Route::delete('/deletejadwal/{id}', [PenjadwalanController::class, 'deletejadwal'])->name('deletejadwal');
-     
+
 
         Route::get('/blog', [BlogController::class, 'index'])->name('blog');
         Route::get('/blog/createblog', [BlogController::class, 'createblog'])->name('blog.createblog');
@@ -103,9 +103,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::put('/updatecppob/{id}', [PendaftarCppobController::class, 'updatecppob'])->name('updatecppob');
         Route::delete('/deletecppob/{id}', [PendaftarCppobController::class, 'deletecppob'])->name('deletecppob');
         Route::get('/exportPdf', [PendaftaranController::class, 'exportPdf'])->name('exportPdf');
-});
-
     });
+});
 
 
 // LoginController Routes
@@ -122,9 +121,9 @@ Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('lo
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/beranda', [AppController::class, 'beranda'])->name('beranda');
-    Route::get('/pendaftaran', [PendaftaranController::class, 'daftar'])->name('pendaftaran');    
+    Route::get('/pendaftaran', [PendaftaranController::class, 'daftar'])->name('pendaftaran');
     Route::get('/daftar-cppob', [PendaftaranController::class, 'DaftarCppob'])->name('daftar.cppob');
     Route::post('/daftar-cppob', [PendaftaranController::class, 'DaftarCppobPost'])->name('daftar.cppob.post');
     Route::get('riwayat-daftar', [PendaftaranController::class, 'riwayatdaftar'])->name('riwayat.daftar');
@@ -138,13 +137,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/detaildaftar/{id}', [AppController::class, 'detaildaftar'])->name('detaildaftar');
     Route::get('/pendaftaran/{id}', [PendaftaranController::class, 'showForm'])->name('pendaftaran');
     Route::post('/pendaftaran/{id}', [PendaftaranController::class, 'store']);
-
-  });
-
- 
-
-
-
-
-
-
+});
