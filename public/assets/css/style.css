@@ -3,96 +3,84 @@ body{
         font-family: "Poetsen One", sans-serif;
 } */
 
-
-@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Poetsen+One&display=swap');
-body{
-
-
-  font-family: "Poetsen One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+@import url("https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Poetsen+One&display=swap");
+body {
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
-
 
 .btn-danger {
-  background-color: 97BE5A;
-  border-radius: 10px;
-  border-color: 97BE5A;
-  padding: 10px 45px;
-  color: white;
+    background-color: 97BE5A;
+    border-radius: 10px;
+    border-color: 97BE5A;
+    padding: 10px 45px;
+    color: white;
 }
 .btn-outline-danger {
-  background-color: transparent;
-  border-radius: 10px;
-  border-color: 97BE5A;
-  padding: 10px 45px;
-  color: rgb(170, 14, 14);
+    background-color: transparent;
+    border-radius: 10px;
+    border-color: 97BE5A;
+    padding: 10px 45px;
+    color: rgb(170, 14, 14);
 }
 /*navbar*/
-.nav-item .nav-link{
-  font-size: 18px;
-  margin-left: 5px;
-  margin-right: 5px;
+.nav-item .nav-link {
+    font-size: 18px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .scroll-nav-active {
-  background-color: white;
-  /*border-bottom: 2px solid rgb(170, 14, 14);*/
-  box-shadow: 1px 1px 11px -1px rgba(1, 1, 1, 0.08);
+    background-color: white;
+    /*border-bottom: 2px solid rgb(170, 14, 14);*/
+    box-shadow: 1px 1px 11px -1px rgba(1, 1, 1, 0.08);
 }
 .text-nav-active {
-  color: black;
-} 
+    color: black;
+}
 #hero {
-  background-image: url("../../assets/css/img/ddd.png");
-  background-repeat: repeat;
-  background-size: cover;
-  background-position: center;
-  height: 600px;
+    background-image: url("../../assets/css/img/ddd.png");
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
 }
 
 .hero-tittle {
-  padding-top: 200px;
+    padding-top: 200px;
 }
 
-.hero-text{
-  font-size: 60px;
-  font-weight: 600;
+.hero-text {
+    font-size: 40px;
+    font-weight: 600;
 }
 
-@media  screen and (min-width: 450px) {
-  .hero-text{
-    font-size: 35px;
-    font-weight: 600;
-  }
-  
+@media (min-width: 992px) {
+    .hero-text {
+        font-size: 60px;
+        font-weight: 600;
+    }
 }
-@media  screen and (min-width: 800px) {
-  .hero-text{
-    font-size: 60px;
-    font-weight: 600;
-  }
-  
-}
+
 /*join*/
 .stripe {
-  height: 5px;
-  width: 40px;
-  background-color: red;
+    height: 5px;
+    width: 40px;
+    background-color: red;
 }
 
 .konten-berita p {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
-
 
 /*video*/
 #video {
-  background-image: url("../../assets/css/img/desain.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 500px;
+    background-image: url("../../assets/css/img/desain.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
 }
 
 .slider-arrow {
@@ -104,120 +92,121 @@ body{
 }
 
 #pangan {
-  background-image: url("../../assets/css/img/pangandesain.png");
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-position: center;
-  height: 500px;
+    background-image: url("../../assets/css/img/pangandesain.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    height: 500px;
 }
 
 .carousel-inner img {
-  object-fit: cover;
+    object-fit: cover;
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: black;
-  border-radius: 50%;
+    background-color: black;
+    border-radius: 50%;
 }
 
 .footer {
-  background-color: #282828;
-  color: #ffffff;
-  padding: 40px 0;
-  font-family: Arial, sans-serif;
+    background-color: #282828;
+    color: #ffffff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
 }
 
 .footer .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .footer .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .footer .col-md-4 {
-  flex: 1;
-  margin: 20px 0;
+    flex: 1;
+    margin: 20px 0;
 }
 
-.footer h5, .footer h4 {
-  margin-bottom: 20px;
+.footer h5,
+.footer h4 {
+    margin-bottom: 20px;
 }
 
 .footer-items {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .footer-items ul {
-  padding: 0;
-  list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 .footer-items ul li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .footer-items ul li a {
-  color: #ffffff;
-  text-decoration: none;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .footer-items ul li a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .footer .border {
-  width: 50px;
-  height: 2px;
-  background-color: #3498db;
-  margin-bottom: 20px;
+    width: 50px;
+    height: 2px;
+    background-color: #3498db;
+    margin-bottom: 20px;
 }
 
 .footer .social-media a {
-  color: #ffffff;
-  font-size: 24px;
-  margin-right: 10px;
-  text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 10px;
+    text-decoration: none;
 }
 
 .footer .social-media a:hover {
-  color: #3498db;
+    color: #3498db;
 }
 
 .footer .social-media a.fa-whatsapp:hover {
-  color: #25d366;
+    color: #25d366;
 }
 
 .footer .text-center {
-  margin-top: 20px;
-  border-top: 1px solid #444;
-  padding-top: 10px;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
 }
 
-@import '~summernote/dist/summernote-bs4.min.css';
+@import "~summernote/dist/summernote-bs4.min.css";
 
 #jadwal .btn {
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-transform: uppercase;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
 }
 
 #jadwal .btn-primary {
-  background-color: #007bff;
-  border: none;
+    background-color: #007bff;
+    border: none;
 }
 
 #jadwal .btn-primary:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 #jadwal .btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
 #konsultasi .consultant {

@@ -15,9 +15,28 @@ class PendaftarCppobController extends Controller
         return view('dashboard', compact('cppob'));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $cppob = DaftarSipp::get();
+        $cppob = DaftarSipp::query();
+
+        if ($request->query('search')) {
+            $cppob->where('nama_ukm', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('nama_lengkap', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('alamat_lengkap', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('alamat_produksi', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('email_aktif', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('no_hp', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('nomer_nik', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('nomer_npwp', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('jenisusaha', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('jenisproduk', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('namaproduk', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('no_nib', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('sibakul', 'like', '%' . $request->query('search') . '%');
+            $cppob->orWhere('kemasan', 'like', '%' . $request->query('search') . '%');
+        }
+
+        $cppob = $cppob->paginate(10);
         return view('pendaftarcppob', compact('cppob'));
     }
 
@@ -67,7 +86,7 @@ class PendaftarCppobController extends Controller
             'kemasan' => $request->kemasan,
             'tanggal_daftar' => $request->tanggal_daftar,
         ]);
-        
+
 
         return redirect()->route('admin.pendaftarcppob')->with('success', 'Data berhasil disimpan');
     }
@@ -84,28 +103,28 @@ class PendaftarCppobController extends Controller
     public function updatecppob(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-        'nama_ukm' => 'required',
-        'nama_lengkap' => 'required',
-        'alamat_lengkap' => 'required',
-        'alamat_produksi' => 'required',
-        'email_aktif' => 'required',
-        'no_hp' => 'required',
-        'nomer_nik' => 'required',
-        'nomer_npwp' => 'required',
-        'jenisusaha' => 'required',
-        'jenisproduk' => 'required',
-        'namaproduk' => 'required',
-        'no_nib' => 'required',
-        'sibakul' => 'required',
-        'kemasan' => 'required',
-        'tanggal_daftar' => 'required',
+            'nama_ukm' => 'required',
+            'nama_lengkap' => 'required',
+            'alamat_lengkap' => 'required',
+            'alamat_produksi' => 'required',
+            'email_aktif' => 'required',
+            'no_hp' => 'required',
+            'nomer_nik' => 'required',
+            'nomer_npwp' => 'required',
+            'jenisusaha' => 'required',
+            'jenisproduk' => 'required',
+            'namaproduk' => 'required',
+            'no_nib' => 'required',
+            'sibakul' => 'required',
+            'kemasan' => 'required',
+            'tanggal_daftar' => 'required',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
-        $cppob= [
+        $cppob = [
             'nama_ukm' => $request->nama_ukm,
             'nama_lengkap' => $request->nama_lengkap,
             'alamat_lengkap' => $request->alamat_lengkap,

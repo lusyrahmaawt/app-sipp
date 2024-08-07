@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Blog;
 use App\Models\Penjadwalan;
 use App\Models\Video;
@@ -25,22 +26,22 @@ class AppController extends Controller
     {
         return view('berita.berita', [
             'artikels' => Blog::orderBy('id', 'desc')->get()
-        ]);   
+        ]);
     }
     // public function detail ($slug)
     // {
     //     $artikel = Blog::where('slug', $slug)->first();
     //     return view('berita.berita', [
     //         'artikel' => $artikel
-    //     ]);   
+    //     ]);
     // }
     public function detail($slug)
-{
-    $artikels = Blog::where('slug', $slug)->first();
-    return view('berita.detail', [
-        'artikel' => $artikels
-    ]);   
-}
+    {
+        $artikels = Blog::where('slug', $slug)->first();
+        return view('berita.detail', [
+            'artikel' => $artikels
+        ]);
+    }
 
     public function detailpoto()
     {
@@ -82,22 +83,39 @@ class AppController extends Controller
     }
 
     public function showJadwal()
-{
-    $user = Auth::user();
-    $jadwals = Jadwal::all();
+    {
+        $user = Auth::user();
+        $jadwals = Jadwal::all();
 
-    // Membuat array untuk status pendaftaran tiap kegiatan
-    $registrationStatus = [];
-    foreach ($jadwals as $jadwal) {
-        $registrationStatus[$jadwal->id] = DaftarSipp::where('id_user', $user->id)
-            ->where('id_jadwal', $jadwal->id)
-            ->exists();
+        // Membuat array untuk status pendaftaran tiap kegiatan
+        $registrationStatus = [];
+        foreach ($jadwals as $jadwal) {
+            $registrationStatus[$jadwal->id] = DaftarSipp::where('id_user', $user->id)
+                ->where('id_jadwal', $jadwal->id)
+                ->exists();
+        }
+
+        return view('jadwal.index', [
+            'jadwals' => $jadwals,
+            'registrationStatus' => $registrationStatus
+        ]);
     }
 
-    return view('jadwal.index', [
-        'jadwals' => $jadwals,
-        'registrationStatus' => $registrationStatus
-    ]);
-}
+    public function videoKegiatan()
+    {
+        $video = Video::all();
 
+        return view('video', [
+            'videos' => $video
+        ]);
+    }
+
+    public function fotoKegiatan()
+    {
+        $potos = Poto::all();
+
+        return view('fotokegiatan', [
+            'potos' => $potos
+        ]);
+    }
 }
