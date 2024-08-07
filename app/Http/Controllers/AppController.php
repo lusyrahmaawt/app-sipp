@@ -42,6 +42,16 @@ class AppController extends Controller
     ]);   
 }
 
+    public function detailpoto()
+    {
+        $potos = Poto::orderBy('id', 'desc')->get(); // Ambil semua data Poto dalam urutan menurun berdasarkan ID
+    
+        return view('poto.detailpoto', [
+            'potos' => $potos // Pastikan nama variabel sesuai dengan yang digunakan di view
+        ]);   
+    }
+    
+
 
     public function beranda()
     {

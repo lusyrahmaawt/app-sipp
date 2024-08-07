@@ -159,23 +159,28 @@
   </div>
 </section>
 {{-- penjadwalan --}}
-
 <section id="poto" class="py-5">
   <div class="container py-5">
-    <div class="header-berita text-center">
-      <h2 class="fw-bold">Foto Kegiatan</h2>
-    </div>
-    <div class="row py-5" data-aos="zoom-in-up">
-      @foreach ($potos as $poto)
-      <div class="col-lg-4" data-aos="flip-up">
-              <img src="{{ asset('storage/poto/' . $poto->poto) }}" class="img-fluid" alt="">
-                  <h4 class="fw-bold mb-2">{{ $poto->kegiatan}}</h4>
+      <div class="header-berita text-center">
+          <h2 class="fw-bold">Foto Kegiatan</h2>
       </div>
-      @endforeach
+      <div class="row py-5" data-aos="zoom-in-up">
+          @foreach ($potos as $poto)
+              <div class="col-lg-4 mb-4" data-aos="flip-up">
+                  <div class="poto-wrapper">
+                      <img src="{{ asset('storage/poto/' . $poto->poto) }}" class="img-fluid poto-image" alt="">
+                  </div>
+                  <h5 class="text-secondary mt-2 text-small">{{ $poto->kegiatan }}</h5>
+              </div>
+          @endforeach
+      </div>
       <div class="footer-berita text-center">
-        <a href="" class="btn btn-outline-danger"> Foto Lainnya</a>
-    </div>
+          <a href="/detailpoto" class="btn btn-outline-danger">Foto Lainnya</a>
+      </div>
   </div>
+</section>
+
+
 </section>
 
             
@@ -183,7 +188,7 @@
 
 {{-- video --}}
 
-<section id="video_youtube" class="py-5">
+<section id="video_youtube" class="py-5"  style="margin-top: 100px; background-color: #f8f9fa;">
  <div class="container py-5">
    <div class="header-berita text-center">
      <h2 class="fw-bold">Video Kegiatan CPPOB </h2>
@@ -204,32 +209,34 @@
  </div>
 </section>  
 
-<section id="konsultasi" class="py-5">
-<div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
-  <div class="carousel-inner">
-      @foreach(['konsul1', 'konsul2', 'konsul3', 'konsul4', 'konsul5'] as $key => $image)
-          <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-              <img src="{{ asset("assets/css/img/{$image}.png") }}" class="d-block w-100 img-fluid" alt="...">
-          </div>
-      @endforeach
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
-<div class="text-center mt-4">
-  <a href="https://api.whatsapp.com/send?phone=+6282121044424&text=Halo%20saya%20ingin%20konsultasi" class="btn btn-success" target="_blank">
-    <i class="fa fa-whatsapp"></i> Hubungi Kami di WhatsApp
-  </a>
-</div>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<section id="konsultasi" class="py-5">
+  <div class="container">
+      <div class="row text-center">
+          @php
+              $consultants = [
+                  ['image' => 'konsultan.png', 'name' => 'Lusy Rahmawati', 'whatsapp' => '+6282121044424'],
+                  ['image' => 'konsultan2.png', 'name' => 'Budi Santoso', 'whatsapp' => '+6281234567890'],
+                  ['image' => 'konsultan3.png', 'name' => 'Sari Dewi', 'whatsapp' => '+6280987654321']
+              ];
+          @endphp
+          @foreach($consultants as $consultant)
+              <div class="col-md-4 mb-4">
+                  <div class="consultant">
+                      <img src="{{ asset("assets/css/img/{$consultant['image']}") }}" class="rounded-circle img-fluid consultant-image" alt="Consultant Image">
+                      <div class="consultant-info mt-3">
+                          <a href="https://api.whatsapp.com/send?phone={{ $consultant['whatsapp'] }}&text=Halo%20saya%20ingin%20konsultasi" target="_blank">
+                              <img src="{{ asset("assets/css/img/waa.png") }}" class="whatsapp-logo" alt="WhatsApp Logo">
+                          </a>
+                          <p class="consultant-name mt-2">{{ $consultant['name'] }}</p>
+                      </div>
+                  </div>
+              </div>
+          @endforeach
+      </div>
+  </div>
 </section>
+
 @endsection
 
 

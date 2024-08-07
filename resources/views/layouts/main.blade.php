@@ -244,14 +244,26 @@
                 </a>
               </li>
               <li class="nav-item">
-                <form action="{{ route('admin.logoutadmin') }}" method="POST" style="display: inline;">
+                <a href="{{ route('admin.pendaftarcppob') }}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>Pendaftar CPPOB</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon far fa-circle text-warning"></i>
+                  <p>Warning</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <form action="{{ route('admin.logoutadmin') }}" method="POST">
                     @csrf
-                    <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; display: flex; align-items: center;">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p style="margin: 0;">Logout</p>
+                    <button type="submit" class="nav-link">
+                      <i class="nav-icon fas fa-sign-out-alt"></i>
+                      <p style="margin: 0;">Logout</p>
                     </button>
                 </form>
-            </li>                   
+              </li>
             </ul>
           </li>
         </ul>

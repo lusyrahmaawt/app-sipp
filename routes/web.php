@@ -15,6 +15,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PotoController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,8 @@ Route::view('/ukm', 'ukm');
 Route::view('/berita', [AppController::class, 'berita.berita']);
 Route::get('/berita', [AppController::class, 'berita'])->name('berita');
 Route::get('/berita/{slug}', [AppController::class, 'detail'])->name('berita.detail');
+
+Route::get('/detailpoto', [AppController::class, 'detailpoto'])->name('poto.detailpoto');
 Route::view('/lengkap', 'berita.lengkap');
 Route::view('/nib', 'fasilitasi.nib');
 Route::view('/nibberanda', 'fasilitasi.nibberanda');
@@ -48,8 +51,10 @@ Route::view('/pangan', 'pangan');
 Route::view('/jadwal', 'jadwal');
 
 
+
+
     
-Route::prefix('admin')->as('admin.')->group(function () {
+Route::prefix('/admin')->as('admin.')->group(function () {
     Route::get('/loginadmin', [AuthController::class, 'index'])->name('loginadmin');
     Route::post('/loginadmin-proses', [AuthController::class, 'loginadmin_proses'])->name('loginadmin-proses');
     Route::post('/logoutadmin', [AuthController::class, 'logoutadmin'])->name('logoutadmin');

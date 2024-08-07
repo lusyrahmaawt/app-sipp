@@ -56,11 +56,13 @@
                                             {{ $video->judul }}
                                         </td>
                                         <td>
-                                            <iframe height="150" src="https://www.youtube.com/embed/{{ $video->youtube_code }}" 
+                                            <iframe height="150" src="https://www.youtube.com/embed/VIDEO_ID{{ $video->youtube_code }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                            {{-- <iframe height="150" src="https://www.youtube.com/embed/{{ $video->youtube_code }}" 
                                                 title="YouTube video player" frameborder="0" 
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                                 referrerpolicy="strict-origin-when-cross-origin" 
-                                                allowfullscreen></iframe>
+                                                allowfullscreen></iframe> --}}
                                             
                                         </td>
                                             <td>
