@@ -100,6 +100,16 @@ class PendaftarCppobController extends Controller
         return view('editcppob', compact('cppob'));
     }
 
+    public function detailcppob($id)
+    {
+        $cppob = DaftarSipp::find($id);
+
+        if (!$cppob) {
+            return redirect()->route('admin.pendaftarcppob')->with('error', 'Data tidak ditemukan');
+        }
+        return view('detailcppob', compact('cppob'));
+    }
+
     public function updatecppob(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [

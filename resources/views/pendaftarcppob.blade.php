@@ -88,10 +88,18 @@
                                                 <td>{{ $c->tanggal_daftar }}</td>
 
                                                 <td>
-                                                    <a href ="{{ route('admin.editcppob', ['id' => $c->id]) }}"
-                                                        class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                                    <a href="{{ route('admin.detailcppob', ['id' => $c->id]) }}"
+                                                        class="btn btn-sm btn-success">
+                                                        <i class="fas fa-pen"></i> Detail
+                                                    </a>
+                                                    <a href="{{ route('admin.editcppob', ['id' => $c->id]) }}"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fas fa-pen"></i> Edit
+                                                    </a>
                                                     <a data-toggle="modal" data-target="#modal-delete{{ $c->id }}"
-                                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i>Hapus</a>
+                                                        class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash-alt"></i> Hapus
+                                                    </a>
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="modal-delete{{ $c->id }}">

@@ -104,6 +104,7 @@ Route::prefix('/admin')->as('admin.')->group(function () {
         Route::get('/createcppob', [PendaftarCppobController::class, 'createcppob'])->name('createcppob');
         Route::post('/storecppob', [PendaftarCppobController::class, 'storecppob'])->name('storecppob');
         Route::get('/editcppob/{id}', [PendaftarCppobController::class, 'editcppob'])->name('editcppob');
+        Route::get('/detailcppob/{id}', [PendaftarCppobController::class, 'detailcppob'])->name('detailcppob');
         Route::put('/updatecppob/{id}', [PendaftarCppobController::class, 'updatecppob'])->name('updatecppob');
         Route::delete('/deletecppob/{id}', [PendaftarCppobController::class, 'deletecppob'])->name('deletecppob');
         Route::get('/exportPdf', [PendaftaranController::class, 'exportPdf'])->name('exportPdf');

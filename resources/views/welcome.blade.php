@@ -214,6 +214,46 @@
             </div>
     </section>
     <section id="konsultasi" class="py-5">
+        <div class="container">
+            <div class="row my-5 justify-content-evenly">
+                <div class="col-lg-3 text-center">
+                    <a href="" class="text-decoration-none">
+                        <img src="{{ asset('assets/img/messages-1.jpg') }}" class="img-thumbnail"
+                            style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;">
+                        <div class="mt-3">
+                            <i class="h2 text-success bi bi-whatsapp"></i>
+                            <h4 class="mt-2 text-dark">
+                                Lussy Rahmawati
+                            </h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <a href="" class="text-decoration-none">
+                        <img src="{{ asset('assets/img/messages-2.jpg') }}" class="img-thumbnail"
+                            style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;">
+                        <div class="mt-3">
+                            <i class="h2 text-success bi bi-whatsapp"></i>
+                            <h4 class="mt-2 text-dark">
+                                Lussy Rahmawati
+                            </h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <a href="" class="text-decoration-none">
+                        <img src="{{ asset('assets/img/messages-3.jpg') }}" class="img-thumbnail"
+                            style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;">
+                        <div class="mt-3">
+                            <i class="h2 text-success bi bi-whatsapp"></i>
+                            <h4 class="mt-2 text-dark">
+                                Lussy Rahmawati
+                            </h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
         <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach (['konsul1', 'konsul2', 'konsul3', 'konsul4', 'konsul5'] as $key => $image)
