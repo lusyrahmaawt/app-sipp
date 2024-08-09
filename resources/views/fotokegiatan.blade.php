@@ -23,7 +23,7 @@
     <section id="program" style="padding-top: 16rem; padding-bottom: 16rem;">
         <div class="container col-xl-9">
             <div class="text-center">
-                <h1>Video Kegiatan CPPOB</h1>
+                <h1>Foto Kegiatan CPPOB</h1>
             </div>
 
             <div class="row py-5" data-aos="zoom-in-up">
@@ -34,7 +34,7 @@
                                 <img src="{{ asset('storage/poto/' . $poto->poto) }}" class="img-fluid">
                             </div>
                         </a>
-                        <h4 class="fw-bold mb-2">{{ $poto->kegiatan }}</h4>
+                        <h6 class="text-center mb 2">{{ $poto->kegiatan }}</h6>
                     </div>
                 @endforeach
             </div>

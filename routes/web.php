@@ -48,9 +48,10 @@ Route::view('/pirtberanda', 'fasilitasi.pirtberanda');
 Route::view('/akun', 'akun');
 Route::view('/umku', 'umku');
 Route::view('/pangan', 'pangan');
-Route::view('/jadwal', 'jadwal');
 Route::get('/video-kegiatan-cppob', [AppController::class, 'videoKegiatan'])->name('page.video');
 Route::get('/foto-kegiatan', [AppController::class, 'fotoKegiatan'])->name('page.photo');
+Route::view('/alur', 'alur');
+
 
 
 Route::prefix('/admin')->as('admin.')->group(function () {

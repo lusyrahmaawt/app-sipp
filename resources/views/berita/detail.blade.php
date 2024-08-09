@@ -23,6 +23,9 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center mt-4">
+                <a href="{{ url('/') }}" class="btn btn-outline-primary">Kembali ke Halaman Utama</a>
+            </div>
         </div>
     </div>
 </section>

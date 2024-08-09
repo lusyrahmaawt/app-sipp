@@ -21,6 +21,12 @@
                         <a class="nav-link active" href="#penjadwalan">Penjadwalan</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" href="/alur">Alur Pendaftaran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#poto">Foto Kegiatan</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="#konsultasi">Konsultasi</a>
                     </li>
                 </ul>

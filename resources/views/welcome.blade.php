@@ -114,7 +114,7 @@
         </div>
     </section>
     {{-- penjadwalan --}}
-    <section id="penjadwalan" class="py-5" style="margin-top: 100px; background-color: #f8f9fa;">
+    <section id="penjadwalan" class="py-5" style="margin-top: 100px; background-color: #f8f9fa; padding-top: 80px;">
         <div class="container" data-aos="flip-up">
             <div class="header-berita text-center mb-5">
                 <h3 class="fw-bold">Data Jadwal Pendaftaran</h3>
@@ -184,7 +184,7 @@
                                 <img src="{{ asset('storage/poto/' . $poto->poto) }}" class="img-fluid">
                             </div>
                         </a>
-                        <h4 class="fw-bold mb-2">{{ $poto->kegiatan }}</h4>
+                        <h6 class="text-center mb-2">{{ $poto->kegiatan }}</h6>
                     </div>
                 @endforeach
                 <div class="footer-berita text-center">
@@ -230,7 +230,7 @@
                 </div>
                 <div class="col-lg-3 text-center">
                     <a href="" class="text-decoration-none">
-                        <img src="{{ asset('assets/img/messages-2.jpg') }}" class="img-thumbnail"
+                        <img src="{{ asset('assets/css/img/konsultan.png') }}" class="img-thumbnail"
                             style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;">
                         <div class="mt-3">
                             <i class="h2 text-success bi bi-whatsapp"></i>
@@ -245,6 +245,7 @@
                         <img src="{{ asset('assets/img/messages-3.jpg') }}" class="img-thumbnail"
                             style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;">
                         <div class="mt-3">
+                            <a href="https://api.whatsapp.com/send?phone=+6282121044424&text=Halo%20saya%20ingin%20konsultasi">
                             <i class="h2 text-success bi bi-whatsapp"></i>
                             <h4 class="mt-2 text-dark">
                                 Lussy Rahmawati
@@ -254,30 +255,6 @@
                 </div>
             </div>
         </div>
-        <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @foreach (['konsul1', 'konsul2', 'konsul3', 'konsul4', 'konsul5'] as $key => $image)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                        <img src="{{ asset("assets/css/img/{$image}.png") }}" class="d-block w-100 img-fluid"
-                            alt="...">
-                    </div>
-                @endforeach
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <div class="text-center mt-4">
-            <a href="https://api.whatsapp.com/send?phone=+6282121044424&text=Halo%20saya%20ingin%20konsultasi"
-                class="btn btn-success" target="_blank">
-                <i class="fa fa-whatsapp"></i> Hubungi Kami di WhatsApp
-            </a>
-        </div>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </section>
 @endsection
@@ -285,24 +262,28 @@
 
 @section('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('a.nav-link');
+    document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a.nav-link');
 
-            for (const link of links) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
+    for (const link of links) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
 
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
 
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
+            if (targetElement) {
+                const offset = 80; // Sesuaikan nilai offset ini sesuai dengan tinggi navbar atau header
+                const elementPosition = targetElement.offsetTop - offset;
+
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
                 });
             }
         });
+    }
+});
+
     </script>
 @endsection
